@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Vendas</title></head><body class="p-4">
+<h2>Registrar Venda</h2>
+<form method="post">
+<select name="produto_id">{% for p in produtos %}<option value="{{p.id}}">{{p.nome}} (R$ {{p.preco}})</option>{% endfor %}</select>
+<select name="cliente_id">{% for c in clientes %}<option value="{{c.id}}">{{c.nome}}</option>{% endfor %}</select>
+<input type="number" name="quantidade" value="1" min="1">
+<button type="submit">Vender</button>
+</form>
+<h3 class="mt-4">Histórico</h3><ul>{% for v in vendas %}<li>{{v.created_at}} — {{v.cliente}} comprou {{v.quantidade}}x {{v.produto}} (R$ {{v.total}})</li>{% endfor %}</ul>
+</body></html>
